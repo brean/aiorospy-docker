@@ -1,0 +1,32 @@
+version: '3.3'
+
+services:
+  ros:
+    image: ros:melodic-ros-base
+    container_name: ros
+    tty: true
+    command: [ "roscore", "-p", "11311" ]
+    networks:
+      - rosnet
+    environment:
+      ROS_MASTER_URI: "${ROS_MASTER_URI}"
+      ROS_HOSTNAME: "${ROS_HOSTNAME}"
+
+  aiorospy-example:
+    build: ros-python3
+    image: brean/ros-python3:latest
+    container_name: aiorospy
+    volumes:
+      - ./aiorospy_example:/aiorospy_example
+    working_dir: /aiorospy_example
+    environment:
+      ROS_MASTER_URI: "${ROS_MASTER_URI}"
+      ROS_HOSTNAME: "${ROS_HOSTNAME}"
+    command: [ "make" ]
+    depends_on:
+      - ros
+    networks:
+      - rosnet
+
+networks:
+  rosnet:

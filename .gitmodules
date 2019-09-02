@@ -1,0 +1,3 @@
+[submodule "aiorospy_example/aiorospy"]
+	path = aiorospy_example/aiorospy
+	url = git@github.com:locusrobotics/aiorospy.git

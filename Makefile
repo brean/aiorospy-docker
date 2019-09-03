@@ -7,7 +7,7 @@ down:
 	docker-compose down
 
 logs:
-	docker-compose logs -f aiorospy-example
+	terminator -g terminator.conf -l aiorospy &
 
 build:
 	docker build -t ros-python3 ros-python3/

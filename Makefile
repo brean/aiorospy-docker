@@ -1,4 +1,6 @@
-export DOCKERHUB_ACCOUNT=brean
+include .env
+export
+
 
 up:
 	docker-compose up -d
@@ -15,5 +17,5 @@ build:
 publish:
 	make build
 	# you might want to login using "docker login" first
-	docker image tag ros-python3:latest $(DOCKERHUB_ACCOUNT)/ros-python3:latest
+	docker image tag $(TAG_NAME) $(DOCKERHUB_ACCOUNT)/$(TAG_NAME)
 	docker image push $(DOCKERHUB_ACCOUNT)/ros-python3

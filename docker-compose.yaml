@@ -11,10 +11,12 @@ services:
     environment:
       ROS_MASTER_URI: "${ROS_MASTER_URI}"
       ROS_HOSTNAME: "${ROS_HOSTNAME}"
+      ROS_DISTRO: "${ROS_DISTRO}"
+      CATKIN_PACKAGE_SHARE_DESTINATION: "${CATKIN_PACKAGE_SHARE_DESTINATION}"
 
   aiorospy-example:
     build: ros-python3
-    image: brean/ros-python3:latest
+    image: ros-python3
     container_name: aiorospy
     volumes:
       - ./aiorospy_example:/aiorospy_example
@@ -22,6 +24,7 @@ services:
     environment:
       ROS_MASTER_URI: "${ROS_MASTER_URI}"
       ROS_HOSTNAME: "${ROS_HOSTNAME}"
+      ROS_DISTRO: "${ROS_DISTRO}"
     command: [ "make" ]
     depends_on:
       - ros

@@ -12,7 +12,9 @@ logs:
 	terminator -g terminator.conf -l aiorospy &
 
 build:
-	docker build -t ros-python3 ros-python3/
+	docker build -t ros-python3 \
+		--build-arg ROS_DISTRO=$(ROS_DISTRO) \
+		ros-python3/
 
 publish:
 	make build
